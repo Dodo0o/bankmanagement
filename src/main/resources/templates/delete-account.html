@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hesap Sil - Dodo Bank</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            transition: background-image 0.5s ease-in-out;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .container h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            color: #343a40;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-delete-account {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            border-radius: 8px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            color: #fff;
+        }
+
+        .btn-delete-account:hover {
+            background-color: #c82333;
+            box-shadow: 0 6px 12px rgba(200, 35, 51, 0.4);
+        }
+
+        .btn-delete-account:focus, .btn-delete-account:active {
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .container h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hesap Sil</h1>
+        <p class="lead">Silmek istediğiniz hesabı seçin.</p>
+        <form th:action="@{/accounts/admin/delete}" method="post">
+            <div class="form-group">
+                <label for="accountId">Hesap ID</label>
+                <select class="form-control" id="accountId" name="accountId" required>
+                    <option th:each="account : ${accounts}" th:value="${account.id}" th:text="${account.id + ' - ' + account.ownerName}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-danger btn-delete-account">Hesap Sil</button>
+        </form>
+    </div>
+
+    <script>
+        // List of background images from Unsplash
+        const images = [
+            'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fG5hdHVyZXxlbnwwfHx8fDE2NDQ1ODQ1NTQ&ixlib=rb-1.2.1&q=80&w=1080',
+            'https://images.unsplash.com/photo-1535124054900-c2cd30e176a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGZvcmVzdHxlbnwwfHx8fDE2NDQ1ODQ1NTQ&ixlib=rb-1.2.1&q=80&w=1080',
+            'https://images.unsplash.com/photo-1518837695005-2083093ee35b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGJlYWNoZXxlbnwwfHx8fDE2NDQ1ODQ1NTQ&ixlib=rb-1.2.1&q=80&w=1080',
+            'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHN1bnNldHxlbnwwfHx8fDE2NDQ1ODQ1NTQ&ixlib=rb-1.2.1&q=80&w=1080'
+        ];
+
+        // Select a random image
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+
+        // Set the background image
+        document.body.style.backgroundImage = `url(${randomImage})`;
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrap.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

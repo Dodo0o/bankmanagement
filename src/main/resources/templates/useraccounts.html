@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kullanıcı Hesapları</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Hesaplarım</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Hesap ID</th>
+                    <th>Sahip Adı</th>
+                    <th>Bakiye</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="account : ${accounts}">
+                    <td th:text="${account.id}">1</td>
+                    <td th:text="${account.ownerName}">John Doe</td>
+                    <td th:text="${account.balance}">1000</td>
+                    <td>
+						<a th:href="@{/account/transactions(accountId=${account.id})}" class="btn btn-info">Hesap Hareketleri</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/transfer" class="btn btn-primary">Transfer Yap</a>
+    </div>
+</body>
+</html>

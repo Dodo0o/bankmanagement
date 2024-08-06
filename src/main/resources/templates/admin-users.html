@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kullanıcı Yönetimi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            background-size: 200% 200%;
+            animation: gradientAnimation 10s ease infinite;
+            padding: 50px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        .container h1 {
+            margin-bottom: 30px;
+            color: #343a40;
+            text-align: center;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+
+        .user {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .user:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .user p {
+            margin: 0 0 10px;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .user strong {
+            color: #343a40;
+        }
+
+        .btn-primary {
+            margin-top: 10px;
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 86, 179, 0.4);
+        }
+
+        .btn-primary:focus, .btn-primary:active {
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .container h1 {
+                font-size: 2em;
+            }
+
+            .user {
+                padding: 15px;
+            }
+
+            .user p {
+                font-size: 1em;
+            }
+
+            .btn-primary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kullanıcı Yönetimi</h1>
+        <div th:each="user : ${users}" class="user">
+            <p><strong>Kullanıcı Adı:</strong> <span th:text="${user.username}"></span></p>
+            <p><strong>Rol:</strong> <span th:text="${user.role}"></span></p>
+            <a th:href="@{/admin/users/{id}(id=${user.id})}" class="btn btn-primary">Detaylar</a>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrap.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hoşgeldiniz - Dodo Bank</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, rgb(169, 222, 239), #fad0c4);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: rgb(232, 231, 221);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .jumbotron {
+            background-color: rgb(98, 108, 101);
+            color: rgb(0, 0, 0);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .btn-logout, .btn-accounts, .btn-chat {
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .nav-link {
+            color: white !important;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important;
+        }
+        .account-card {
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .account-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .feature, .faq-item, address {
+            margin-bottom: 20px;
+        }
+        address a {
+            color: rgb(0, 255, 64);
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+        footer a {
+            color: #28a745;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Dodo Bank</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/accounts/user/' + ${user.tckimlik}}">Hesaplarım</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">Çıkış Yap</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/chat?roomId=admin-customer-room" class="btn btn-primary">Canlı Sohbet</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Hoşgeldiniz, <span th:text="${user.firstname}">Kullanıcı</span>!</h1>
+            <p class="lead">Hesap bilgilerinizi ve işlemlerinizi buradan görüntüleyebilirsiniz.</p>
+            <hr class="my-4">
+            <a th:href="@{'/accounts/user/' + ${user.tckimlik}}" class="btn btn-primary btn-accounts">Hesaplarım</a>
+            <a th:href="@{/logout}" class="btn btn-danger btn-logout">Çıkış Yap</a>
+            <a th:href="@{/chat?roomId=admin-customer-room}" class="btn btn-success btn-chat">Canlı Sohbet</a>
+        </div>
+
+        <div class="account-card card">
+            <div class="card-body">
+                <h5 class="card-title">Hesap Bilgileriniz</h5>
+                <p class="card-text">Hesap bilgilerinizi ve son işlemlerinizi buradan görüntüleyebilirsiniz.</p>
+                <a th:href="@{'/accounts/user/' + ${user.tckimlik}}" class="btn btn-secondary">Hesaplarım</a>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="account-card card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Hizmetlerimiz</h5>
+                <div class="feature">
+                    <h6>Online Bankacılık</h6>
+                    <p>İstediğiniz zaman erişebileceğiniz Online Bankacılık Sistemi.</p>
+                </div>
+                <div class="feature">
+                    <h6>Kredi</h6>
+                    <p>Özel ve ticari kredilerde uygun oranlar sunuyoruz.</p>
+                </div>
+                <div class="feature">
+                    <h6>Müşteri Hizmetleri</h6>
+                    <p>7/24 Ulaşabileceğiniz Canlı Müşteri Hizmetlerimiz.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="account-card card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Sıkça Sorulan Sorular</h5>
+                <div class="faq-item">
+                    <h6>Nasıl Hesap Açarım</h6>
+                    <p>Müşteri Temsilcimiz ile iletişime geçin. En kısa sürede banka hesabınız açılır</p>
+                </div>
+                <div class="faq-item">
+                    <h6>Neden Bu Banka Kuruldu?</h6>
+                    <p>Görsel Programlama III Dersi İçin proje konusu olarak kurulmuştur.</p>
+                </div>
+                <!-- Add more FAQ items as needed -->
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="account-card card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Bizimle İletişime Geçin</h5>
+                <address>
+                    <p>Email: <a href="mailto:info@dodobank.com">info@dodobank.com</a></p>
+                    <p>Telefon: +90 553 411 74 50</p>
+                    <p>Adres: Gazi Üniversitesi TUSAŞ KAZAN Meslek Yüksekokulu </p>
+                </address>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Dodo Bank. Tüm Hakları Saklıdır</p>
+        <p>Bizi buradan takip edin <a href="#">Facebook</a>, <a href="#">Twitter</a>, ve <a href="#">Instagram</a>.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrap.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

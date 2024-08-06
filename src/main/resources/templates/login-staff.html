@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Yönetici Girişi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container h1 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #007bff;
+        }
+        .btn-primary {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Yönetici Girişi</h1>
+        <form th:action="@{/login/staff}" method="post">
+            <div class="form-group">
+                <label for="tckimlik">T.C. Kimlik Numarası</label>
+                <input type="text" class="form-control" id="tckimlik" name="tckimlik" placeholder="T.C. Kimlik Numarası" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Şifre</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Şifre" required>
+            </div>
+            <div th:if="${error}">
+                <p class="text-danger">T.C. Kimlik Numarası veya şifre hatalı!</p>
+            </div>
+            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+        </form>
+        <div class="footer">
+            <p>&copy; 2024 Banka Yönetim Sistemi</p>
+        </div>
+    </div>
+
+    <script>
+        // List of background images
+        const images = [
+			'https://images.unsplash.com/photo-1519995451813-39e29e054914?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+			            'https://images.unsplash.com/photo-1519068731390-17e4e0e4d153?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080'
+        ];
+
+        // Select a random image
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+
+        // Set the background image
+        document.body.style.backgroundImage = `url(${randomImage})`;
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrap.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

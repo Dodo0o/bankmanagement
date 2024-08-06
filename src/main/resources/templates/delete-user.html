@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kullanıcı Sil - Dodo Bank</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            transition: background-image 0.5s ease-in-out;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .container h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            color: #343a40;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn-delete-user {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            border-radius: 8px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            color: #fff;
+        }
+
+        .btn-delete-user:hover {
+            background-color: #c82333;
+            box-shadow: 0 6px 12px rgba(200, 35, 51, 0.4);
+        }
+
+        .btn-delete-user:focus, .btn-delete-user:active {
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .container h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kullanıcı Sil</h1>
+        <p class="lead">Silmek istediğiniz kullanıcıyı seçin.</p>
+        <form th:action="@{/admin/delete/user}" method="post">
+            <div class="form-group">
+                <label for="userId">Kullanıcı ID</label>
+                <select class="form-control" id="userId" name="userId" required>
+                    <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.id + ' - ' + user.firstname + ' ' + user.lastname}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-danger btn-delete-user">Kullanıcı Sil</button>
+        </form>
+    </div>
+
+    <script>
+        // List of new background images from Unsplash
+        const images = [
+            'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGZvcmdlfGVufDB8fHx8MTY0NDU4NDU1NA&ixlib=rb-1.2.1&q=80&w=1080',
+            'https://images.unsplash.com/photo-1539635272269-df1303d4855c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGRlc2VydHxlbnwwfHx8fDE2NDQ1ODQ1NTQ&ixlib=rb-1.2.1&q=80&w=1080',
+            'https://images.unsplash.com/photo-1533577116850-9cc66cad8a9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGJlYWNoZXxlbnwwfHx8fDE2NDQ1ODQ1NTQ&ixlib=rb-1.2.1&q=80&w=1080',
+            'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHN1bnNldHxlbnwwfHx8fDE2NDQ1ODQ1NTQ&ixlib=rb-1.2.1&q=80&w=1080'
+        ];
+
+        // Select a random image
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+
+        // Set the background image
+        document.body.style.backgroundImage = `url(${randomImage})`;
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrap.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

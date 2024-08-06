@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodo Bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/index/style.css">
+    <style>
+        .attribution { font-size: 11px; text-align: center; }
+        .attribution a { color: hsl(228, 45%, 44%); }
+        .stock-container {
+            width: 100%;
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            margin-top: 20px;
+        }
+        .stock-table {
+            width: 100%;
+        }
+        .stock-table th, .stock-table td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="./index.html"><img src="./images/logo.png" alt="logo-img" class="logo-img"></a>
+        </div>
+        <ul class="navigation">
+            <li><a href="./">Anasayfa</a></li>
+            <li><a href="#latest-articles">Son Güncellemeler</a></li>
+            <li><a href="#container">Bizimle İletişime Geçin</a></li>
+            <li><a href="#">Dodobank Blog</a></li>
+            <li><a href="#">Kariyer</a></li>
+        </ul>
+        <ul>
+            <button class="request_invite_btn" onclick="document.location='login/customer'">Müşteri Girişi</button>
+            <button class="request_yeni_btn" onclick="document.location='login/staff'">Yönetici Girişi</button>
+        </ul>
+        <button class="dropdown-toggle"><img src="./images/icon-hamburger.svg" alt="icon-hamburger"></button>
+    </header>
+    <main>
+        <section class="details">
+            <div class="brief_details">
+                <h1>Yeni nesil dijital bankacılık.</h1>
+                <p>Finansal hayatınızı internete taşıyın. Easybank hesabınız tek noktadan hizmet olacak harcama, tasarruf, bütçeleme, yatırım ve çok daha fazlası için.</p>
+                <button class="request_invite_btn" onclick="document.location='login/customer'">Müşterimiz Olun!</button>
+            </div>
+            <div class="mockup">
+                <img src="./images/image-mockups.png" alt="" class="mockup-img">
+            </div>
+        </section>
+        <section class="reason">
+            <div class="benefit">
+                <h1>Neden DodoBank'i Tercih Etmelisiniz?</h1>
+                <p>Banka hesabınızı finansal merkezinize dönüştürmek için Açık Bankacılık'tan yararlanıyoruz.</p>
+                <p>Mali durumunuzu daha önce hiç olmadığı gibi kontrol edin.</p>
+            </div>
+            <div class="why_list">
+                <div class="online-banking">
+                    <img src="./images/icon-online.svg" alt="icon-online">
+                    <h2>Online Bankacılık</h2>
+                    <p>Modern web ve mobil uygulamalarımız mali durumunuzu takip etmenize olanak tanır dünyanın neresinde olursanız olun.</p>
+                </div>
+                <div class="simple-budgeting">
+                    <img src="./images/icon-budgeting.svg" alt="icon-budgeting">
+                    <h2>Basit Bütçeleme</h2>
+                    <p>Her ay paranızın tam olarak nereye gittiğini görün. Şu anda bildirim alın.Sınırlarınıza ulaşmaya yakın.</p>
+                </div>
+                <div class="fast-onboarding">
+                    <img src="./images/icon-onboarding.svg" alt="icon-onboarding">
+                    <h2>Hızlı Görüntüleme</h2>
+                    <p>Şube yapmıyoruz. Hesabınızı birkaç dakika içinde çevrimiçi açın ve kontrolü ele almaya başlayın mali durumunuz hemen.</p>
+                </div>
+                <div class="open-api">
+                    <img src="./images/icon-api.svg" alt="icon-api">
+                    <h2>Açık API</h2>
+                    <p>Tasarruflarınızı, yatırımlarınızı, emekliliğinizi ve çok daha fazlasını tek hesaptan yönetin. Takip paranız hiç bu kadar kolay olmamıştı.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container" id="container">
+                <img src="./images/contact.png" alt="contact" width="400">
+                <div>
+                    <h1>Bizimle İletişime Geçin!</h1>
+                    <p>"GAZİ ÜNİVERSİTESİ TUSAŞ KAZAN MESLEK YÜKSEKOKULU" Görsel Programlama Dersinde Görüşmek Üzere!</p>
+                </div>
+            </div>
+        </section>
+        <div class="container" id="stockDataContainer">
+            <h2 class="text-center">Döviz Kurları</h2>
+            <div class="stock-container">
+                <table class="table stock-table">
+                    <thead>
+                        <tr>
+                            <th>Currency</th>
+                            <th>Exchange Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stockDataBody">
+                        <!-- API'den gelen veriler buraya eklenecek -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+		<!-- TradingView Widget BEGIN -->
+		<div class="tradingview-widget-container">
+		  <div class="tradingview-widget-container__widget"></div>
+		  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+		  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+		  {
+		  "width": "2440",
+		  "height": "960",
+		  "symbol": "NASDAQ:AAPL",
+		  "timezone": "Etc/UTC",
+		  "theme": "dark",
+		  "style": "1",
+		  "locale": "en",
+		  "withdateranges": true,
+		  "range": "YTD",
+		  "hide_side_toolbar": false,
+		  "allow_symbol_change": true,
+		  "compareSymbols": [
+		    {
+		      "symbol": "BIST:THYAO",
+		      "position": "SameScale"
+		    },
+		    {
+		      "symbol": "BIST:SASA",
+		      "position": "SameScale"
+		    }
+		  ],
+		  "details": true,
+		  "hotlist": true,
+		  "calendar": false,
+		  "show_popup_button": true,
+		  "popup_width": "1000",
+		  "popup_height": "650",
+		  "support_host": "https://www.tradingview.com"
+		}
+		  </script>
+		</div>
+		<!-- TradingView Widget END -->
+
+        <section class="latest-articles" id="latest-articles">
+            <h1>En Son Yazılmış Makaleler</h1>
+            <div class="articles">
+                <div class="article_card">
+                    <div class="card_head">
+                        <img src="./images/image-currency.jpg" alt="image-currency" class="article-thumbnail">
+                    </div>
+                    <div class="card_body">
+                        <span class="postedBy">Doğukan Fidan</span>
+                        <h4 class="article-title">Herhangi bir para biriminde hiçbir ücret ödemeden para alın</h4>
+                        <div class="short_clip_article">
+                            <span>Dünya küçülüyor ve biz daha mobil hale geliyoruz. Peki neden öyle olmalısın? sadece tek seferde para almaya zorlandık…</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="article_card">
+                    <div class="card_head">
+                        <img src="./images/image-restaurant.jpg" alt="image-restaurant" class="article-thumbnail">
+                    </div>
+                    <div class="card_body">
+                        <span class="postedBy">Hacı Ali Akkoyun</span>
+                        <h4 class="article-title">Para konusunda endişelenmeden kendinize iyi davranın</h4>
+                        <div class="short_clip_article">
+                            <span>Basit bütçeleme özelliğimiz harcamalarınızı ayırmanıza ve ayarlamanıza olanak tanır Her ay gerçekçi sınırlar. Bu sen demek …</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="article_card">
+                    <div class="card_head">
+                        <img src="./images/image-plane.jpg" alt="image-plane" class="article-thumbnail">
+                    </div>
+                    <div class="card_body">
+                        <span class="postedBy">Ece Nur Sönmez</span>
+                        <h4 class="article-title">DodoBank kartınızı gittiğiniz her yere götürün</h4>
+                        <div class="short_clip_article">
+                            <span>Seyahatlerinizden keyif almanızı istiyoruz. Bu nedenle satın alımlarda herhangi bir ücret talep etmiyoruz yurtdışındayken. Hatta size göstereceğiz…</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="article_card" id="article_card">
+                    <div class="card_head">
+                        <img src="./images/image-confetti.jpg" alt="image-confetti" class="article-thumbnail">
+                    </div>
+                    <div class="card_body">
+                        <span class="postedBy">Ali Serkan Fidan</span>
+                        <h4 class="article-title">Yalnızca davetle girilebilen Beta hesaplarımız artık yayında!</h4>
+                        <div class="short_clip_article">
+                            <span>Tüm ekibin yoğun çalışmasının ardından kapalı betamızı başlatmanın heyecanını yaşıyoruz. Site üzerinden davetiye istemek çok kolay...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>  
+
+    <footer>
+        <div class="ft-one">
+            <div class="social_link">
+                <img src="./images/logo.png" alt="logo-img" class="logo-img">
+                <ul class="social_link_list">
+                    <li><a href="https://facebook.com"><img src="./images/icon-facebook.svg" alt="icon-facebook"></a></li>
+                    <li><a href="https://www.youtube.com/@gaziuniversitesitusaskazan5098/videos"><img src="./images/icon-youtube.svg" alt="icon-youtube"></a></li>
+                    <li><a href="https://twitter.com"><img src="./images/icon-twitter.svg" alt="icon-twitter"></a></li>
+                    <li><a href="https://pinterest.com"><img src="./images/icon-pinterest.svg" alt="icon-pinterest"></a></li>
+                    <li><a href="https://instagram.com/doguufidan"><img src="./images/icon-instagram.svg" alt="icon-instagram"></a></li>
+                </ul>
+            </div>
+            <ul class="ft-nav-1">
+                <li><a href="#about-us">Hakkımızda</a></li>
+                <li><a href="#container">İletişim</a></li>
+                <li><a href="#lastest-article">Blog</a></li>
+            </ul>
+            <ul class="ft-nav-2">
+                <li><a href="#article_card">Kariyer</a></li>
+                <li><a href="#support">Destek</a></li>
+                <li><a href="#privacy-policy">Gizlilik Politikası</a></li>
+            </ul>
+        </div>
+        <div class="ft-two">
+            <button class="request_invite_btn">Müşterimiz Olun!</button>
+            <h4>© DodoBank. Tüm Hakları Saklıdır.</h4>
+        </div>
+    </footer>
+
+    <div class="attribution">
+        Görsel Prog Geliştirme Projesi <a href="" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">Doğukan FİDAN</a>.
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var apiKey = 'VHDPJ2HNFPCKDJ4Q';
+            var currencies = ['USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY'];
+            var apiUrl = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=';
+
+            currencies.forEach(function(currency) {
+                $.getJSON(apiUrl + currency + '&to_currency=TRY&apikey=' + apiKey, function(data) {
+                    var stockDataBody = $('#stockDataBody');
+                    var exchangeRate = data['Realtime Currency Exchange Rate'];
+
+                    if (exchangeRate) {
+                        var row = $('<tr></tr>');
+                        row.append($('<td></td>').text(currency + '/TRY'));
+                        row.append($('<td></td>').text(exchangeRate['5. Exchange Rate']));
+                        stockDataBody.append(row);
+                    } else {
+                        console.error("API Error: ", data);
+                        stockDataBody.append('<tr><td colspan="2">No data available for ' + currency + '/TRY</td></tr>');
+                    }
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error("API request failed: ", textStatus, errorThrown);
+                    var stockDataBody = $('#stockDataBody');
+                    stockDataBody.append('<tr><td colspan="2">API request failed for ' + currency + '/TRY</td></tr>');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

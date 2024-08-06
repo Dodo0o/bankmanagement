@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Para Transferi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            max-width: 600px;
+            background: rgb(234, 186, 21);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .jumbotron {
+            background-color: rgb(218, 222, 252);
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: rgb(201, 150, 54);
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn-primary {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+            width: 100%;
+            background-color: rgb(255, 128, 128);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: rgb(128, 255, 128);
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Para Transferi</h1>
+            <form action="/transfer" method="post">
+                <div class="form-group">
+                    <label for="fromAccountId">Gönderen Hesap ID</label>
+                    <input type="text" class="form-control" id="fromAccountId" name="fromAccountId" required>
+                </div>
+                <div class="form-group">
+                    <label for="toAccountId">Alıcı Hesap ID</label>
+                    <input type="text" class="form-control" id="toAccountId" name="toAccountId" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Tutar</label>
+                    <input type="number" class="form-control" id="amount" name="amount" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Transfer Yap</button>
+            </form>
+            <div th:if="${message}" class="message">
+                <p th:text="${message}" class="mt-3"></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
